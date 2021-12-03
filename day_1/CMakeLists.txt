@@ -3,4 +3,4 @@ project(day_1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(day_1 main.cpp input_data.h)
+add_executable(day_1 main.cpp input_data.h sample_data.h)
