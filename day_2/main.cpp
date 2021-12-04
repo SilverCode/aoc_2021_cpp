@@ -11,28 +11,30 @@ void split_instruction(const string &input, string &instruction, int &value) {
     value = stoi(input.substr(token_pos, input.length() - token_pos));
 }
 
-void parse_instruction(const string& instruction, int &position, int &depth) {
+void parse_instruction(const string& instruction, int &position, int &depth, int &aim) {
     string cmd;
     int val;
     split_instruction(instruction, cmd, val);
 
     if (cmd == "forward") {
         position += val;
+        depth += aim * val;
     } else if (cmd == "backward") {
         position -= val;
     } else if (cmd == "up") {
-        depth -= val;
+        aim -= val;
     } else if (cmd == "down") {
-        depth += val;
+        aim += val;
     }
 }
 
 int main() {
     int position = 0;
     int depth = 0;
+    int aim = 0;
 
     for (const string& cmd : input_commands) {
-        parse_instruction(cmd, position, depth);
+        parse_instruction(cmd, position, depth, aim);
     }
 
     cout << "Position: " << position << endl;
